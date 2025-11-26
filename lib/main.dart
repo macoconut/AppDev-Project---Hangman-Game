@@ -33,13 +33,13 @@ class HangmanScreen extends StatefulWidget {
 
 class _HangmanScreenState extends State<HangmanScreen>
     with TickerProviderStateMixin {
-  static const int maxAttempts = 5; // Now 5 lives
+  static const int maxAttempts = 5;
 
-  late String _word; // hidden word (UPPERCASE)
-  final Set<String> _guessed = {}; // guessed letters
-  int _wrong = 0; // wrong guesses
+  late String _word;
+  final Set<String> _guessed = {};
+  int _wrong = 0;
 
-  bool _showIntro = true; // show welcome screen first
+  bool _showIntro = true;
 
   late AnimationController _introController;
   late AnimationController _shakeController;
@@ -47,7 +47,7 @@ class _HangmanScreenState extends State<HangmanScreen>
   late Animation<double> _cardFadeAnimation;
   late Animation<double> _shakeAnimation;
 
-  final FocusNode _keyboardFocusNode = FocusNode(); // for hardware keyboard
+  final FocusNode _keyboardFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -57,7 +57,6 @@ class _HangmanScreenState extends State<HangmanScreen>
   }
 
   void _setupAnimations() {
-    // Intro animation: card slides up + fades in
     _introController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 600),
@@ -118,7 +117,7 @@ class _HangmanScreenState extends State<HangmanScreen>
       _showIntro = false;
     });
     _introController.forward(from: 0);
-    // give focus to the game so keyboard works immediately
+
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) {
         _keyboardFocusNode.requestFocus();
@@ -141,7 +140,7 @@ class _HangmanScreenState extends State<HangmanScreen>
     });
 
     if (wasWrong) {
-      _shakeController.forward(from: 0); // shake on wrong guess
+      _shakeController.forward(from: 0);
     }
 
     if (_isWin || _isLose) {
@@ -151,7 +150,7 @@ class _HangmanScreenState extends State<HangmanScreen>
 
   void _handleKeyEvent(RawKeyEvent event) {
     if (_showIntro || _isGameOver) return;
-    if (event is! RawKeyDownEvent) return; // ignore key up / repeats
+    if (event is! RawKeyDownEvent) return;
 
     final keyLabel = event.logicalKey.keyLabel.toUpperCase();
     if (keyLabel.length == 1 &&
@@ -306,7 +305,7 @@ class _HangmanScreenState extends State<HangmanScreen>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
-                        'Welcome to Hangman – Nahuhulog na Nato Edition',
+                        'Welcome to Hangman – Nahuhulog na Bato Edition',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 22,
