@@ -1,0 +1,28 @@
+name: hangman_flutter_project
+description: Simple Hangman game with a twist (friend photo)
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/friend_stage_0.png
+    - assets/friend_stage_1.png
+    - assets/friend_stage_2.png
+    - assets/friend_stage_3.png
+    - assets/friend_stage_4.png
+    - assets/friend_stage_5.png
+
